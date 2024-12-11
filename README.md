@@ -4,7 +4,7 @@ The A Search Algorithm* with graph search (no repeated states) is implemented fo
 
 ## Description
 
-- **A Search Algorithm*:** Finds the optimal path between source and destination based on `f(x) = g(x) + h(x)`.
+- **A star Search Algorithm:** Finds the optimal path between source and destination based on `f(x) = g(x) + h(x)`.
 - **Customizable Turn Cost:** Adds an angle-based penalty to turning, controlled by a user-defined parameter `k`.
 - **Grid Representation:** Supports blocked and unblocked cells with a visualizable grid output.
 - **Heuristic:** Uses Euclidean distance as the heuristic to estimate the cost to the destination.
