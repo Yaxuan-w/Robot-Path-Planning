@@ -1,4 +1,4 @@
-# Author: Yaxuan Wen
+# Author: Alice W.
 # Usage: python3 a_star_algo.py <input_file_name> <output_file_name> <k_value>
 import math
 import heapq
