@@ -37,16 +37,22 @@ class Cell:
         self.depth = 0
 
 # -------- Helper functions --------
-# Check if the coordinate valid
 def is_valid(row, col):
+    """
+    Check if the coordinate valid
+    """
     return (0 <= row < ROW) and (0 <= col < COL)
 
-# Check if the coordinate being blocked
 def is_unblocked(grid, row, col):
+    """
+    Check if the coordinate being blocked
+    """
     return grid[row][col] != 1
 
-# Check if the coordinate is the destination
 def is_destination(row, col, dest):
+    """
+    Check if the coordinate is the destination
+    """
     return row == dest[0] and col == dest[1]
 
 # -------- Actual cose --------
@@ -65,16 +71,20 @@ def calculate_step_cost(i, j, new_i, new_j, last_direction, k):
     return angle_cost + distance_cost, direction
 
 # -------- Heuristic value --------
-# Calculate the heuristic value which is Euclidian distance between the current position and the 
-# goal position
 def calculate_h_value(row, col, dest):
+    """
+    Calculate the heuristic value which is Euclidian distance between the current position and the 
+    goal position
+    """
     return ((row - dest[0]) ** 2 + (col - dest[1]) ** 2) ** 0.5
 
 # -------- A* Search algorithm --------
-# If the target node is found, the path is traced through the trace_path function. This function uses 
-# the parent node information of each node to trace back from the target node to the starting point, 
-# generates the path coordinates and direction, and saves the f value of each node for output.
 def trace_path(cell_details, dest):
+    """
+    If the target node is found, the path is traced through the trace_path function. This function uses 
+    the parent node information of each node to trace back from the target node to the starting point, 
+    generates the path coordinates and direction, and saves the f value of each node for output.
+    """
     global path, path_directions, path_f_values
     row = dest[0]
     col = dest[1]
@@ -97,11 +107,13 @@ def trace_path(cell_details, dest):
     path_directions.reverse()
     path_f_values.reverse()
 
-# - cell_details: Used to store the f, g, h values ​​of each grid node (the evaluation function in A*), 
-# as well as the parent node position of the node (for path backtracking)
-# - closed_list: Mark processed nodes
-# - open_list: Used to store nodes that have not yet been processed
 def a_star_search(grid, src, dest, k):
+    """
+    - cell_details: Used to store the f, g, h values of each grid node (the evaluation function in A*), 
+    as well as the parent node position of the node (for path backtracking)
+    - closed_list: Mark processed nodes
+    - open_list: Used to store nodes that have not yet been processed
+    """
     global depth, path_f_values, path_directions, node_count
     # Check validation
     if not is_valid(src[0], src[1]) or not is_valid(dest[0], dest[1]):
